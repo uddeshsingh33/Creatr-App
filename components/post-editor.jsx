@@ -1,3 +1,4 @@
+// @react-compiler-disable
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -56,20 +57,31 @@ export default function PostEditor({
   });
 
   const { handleSubmit, watch, setValue } = form;
-  const watchedValues = watch();
+  const watchedValues = watch([
+    "title",
+    "content",
+    "featuredImage",
+    "category",
+    "tags",
+    "scheduledFor",
+  ]);
 
   // Auto-save for drafts
-  useEffect(() => {
-    if (!watchedValues.title && !watchedValues.content) return;
+  const stableHandleSave = useCallback(() => {
+  handleSave(true);
+}, [handleSave]);
 
-    const autoSave = setInterval(() => {
-      if (watchedValues.title || watchedValues.content) {
-        if (mode === "create") handleSave(true); // Silent save
-      }
-    }, 30000);
+ useEffect(() => {
+  if (!watchedValues.title && !watchedValues.content) return;
+
+  const autoSave = setInterval(() => {
+    if (watchedValues.title || watchedValues.content) {
+      if (mode === "create") stableHandleSave();
+    }
+  }, 30000);
 
     return () => clearInterval(autoSave);
-  }, [watchedValues.title, watchedValues.content]);
+  }, [watchedValues.title, watchedValues.content,mode, stableHandleSave]);
 
   // Handle image selection
   const handleImageSelect = (imageData) => {

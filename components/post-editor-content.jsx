@@ -130,9 +130,12 @@ export default function PostEditorContent({
           {/* Featured Image */}
           {watchedValues.featuredImage ? (
             <div className="relative group">
-              <img
+              <image
                 src={watchedValues.featuredImage}
                 alt="Featured"
+                width={1200}
+                height={600}
+                unoptimized={true}
                 className="w-full h-80 object-cover rounded-xl"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center space-x-3">

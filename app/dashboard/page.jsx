@@ -82,7 +82,7 @@ export default function DashboardPage() {
             Dashboard
           </h1>
           <p className="text-slate-400 mt-2">
-            Welcome back! Here's what's happening with your content.
+            Welcome back! Here&apos;s what&apos;s happening with your content.
           </p>
         </div>
 

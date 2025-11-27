@@ -62,11 +62,15 @@ const PostPage = ({ params }) => {
   const incrementView = useConvexMutation(api.public.incrementViewCount);
 
   // Track view when post loads
+  const handleIncrementView = useCallback(() => {
+  if (postId) incrementView.mutate({ postId });
+}, [incrementView, postId]);
+
   useEffect(() => {
-    if (post && !postLoading) {
-      incrementView.mutate({ postId });
-    }
-  }, [postLoading]);
+  if (post && !postLoading) {
+    handleIncrementView();
+  }
+}, [post, postLoading, handleIncrementView]);
 
   if (postLoading) {
     return (

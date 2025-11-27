@@ -25,7 +25,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+const NOW = Date.now();
 const PostCard = ({
   post,
   showActions = false,
@@ -35,10 +35,11 @@ const PostCard = ({
   onDuplicate,
   className = "",
 }) => {
+ 
   // Get status badge configuration
   const getStatusBadge = (post) => {
     if (post.status === "published") {
-      if (post.scheduledFor && post.scheduledFor > Date.now()) {
+      if (post.scheduledFor && post.scheduledFor > NOW) {
         return {
           variant: "secondary",
           className: "bg-blue-500/20 text-blue-300 border-blue-500/30",
@@ -105,7 +106,7 @@ const PostCard = ({
                 >
                   {statusBadge.label}
                 </Badge>
-                {post.scheduledFor && post.scheduledFor > Date.now() && (
+                {post.scheduledFor && post.scheduledFor > NOW && (
                   <div className="flex items-center text-xs text-blue-400">
                     <Calendar className="h-3 w-3 mr-1" />
                     {new Date(post.scheduledFor).toLocaleDateString()}

@@ -127,7 +127,7 @@ export default function FeedPage() {
                 </div>
                 <div className="flex-1">
                   <div className="bg-slate-800 border border-slate-600 rounded-full px-4 py-3 text-slate-400 hover:border-slate-500 transition-colors">
-                    What's on your mind? Share your thoughts...
+                    What&apos;s on your mind? Share your thoughts...
                   </div>
                 </div>
               </Link>
@@ -255,8 +255,8 @@ export default function FeedPage() {
                         </div>
                         {user.recentPosts && user.recentPosts.length > 0 && (
                           <div className="text-xs text-slate-400 pl-13">
-                            Latest: "
-                            {user.recentPosts[0].title.substring(0, 30)}..."
+                            Latest: &quot;
+                            {user.recentPosts[0].title.substring(0, 30)}...&quot;
                           </div>
                         )}
                       </div>

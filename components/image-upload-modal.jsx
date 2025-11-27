@@ -607,9 +607,12 @@ export default function ImageUploadModal({
                 {transformedImage && (
                   <div className="relative">
                     <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                      <img
+                      <image
                         src={transformedImage}
                         alt="Transformed preview"
+                        width={800}
+                        height={600}
+                        unoptimized={true}
                         className="w-full h-auto max-h-96 object-contain rounded-lg mx-auto"
                         onError={() => {
                           toast.error("Failed to load transformed image");
